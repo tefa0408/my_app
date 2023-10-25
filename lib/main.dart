@@ -163,14 +163,17 @@ class _MyCalculatorState extends State<MyCalculator> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(16.0),
-            alignment: Alignment.bottomRight,
-            child: Text(
-              _input,
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.grey,
+          Expanded(
+            // Hacer que este Container sea más grande
+            child: Container(
+              padding: EdgeInsets.all(16.0),
+              alignment: Alignment.bottomRight,
+              child: Text(
+                _input,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.grey,
+                ),
               ),
             ),
           ),
@@ -187,9 +190,57 @@ class _MyCalculatorState extends State<MyCalculator> {
           ),
           Row(
             children: <Widget>[
+              SizedBox(
+                  width:
+                      35.0), // Separación entre el primer texto y el borde izquierdo
+              Text(
+                "MC",
+                style: TextStyle(
+                  fontSize: 20.0, // Tamaño de fuente más grande
+                ),
+              ),
+              SizedBox(width: 35.0), // Separación entre Texto 1 y Texto 2
+              Text(
+                "MR",
+                style: TextStyle(
+                  fontSize: 20.0, // Tamaño de fuente más grande
+                ),
+              ),
+              SizedBox(width: 35.0), // Separación entre Texto 2 y Texto 3
+              Text(
+                "M+",
+                style: TextStyle(
+                  fontSize: 20.0, // Tamaño de fuente más grande
+                ),
+              ),
+              SizedBox(width: 35.0), // Separación entre Texto 3 y Texto 4
+              Text(
+                "M-",
+                style: TextStyle(
+                  fontSize: 20.0, // Tamaño de fuente más grande
+                ),
+              ),
+              SizedBox(width: 35.0), // Separación entre Texto 4 y Texto 5
+              Text(
+                "MS",
+                style: TextStyle(
+                  fontSize: 20.0, // Tamaño de fuente más grande
+                ),
+              ),
+              SizedBox(width: 35.0), // Separación entre Texto 5 y Texto 6
+              Text(
+                "M",
+                style: TextStyle(
+                  fontSize: 20.0, // Tamaño de fuente más grande
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: <Widget>[
               buildButton("%"),
-              buildButton("C"),
               buildButton("CE"),
+              buildButton("C"),
               buildIconButton("back", Icons.backspace),
             ],
           ),
@@ -244,7 +295,7 @@ class _MyCalculatorState extends State<MyCalculator> {
         margin: EdgeInsets.all(2.0),
         child: ElevatedButton(
           onPressed: () {
-            if (value == 'C') {
+            if (value == 'C' || value == 'CE') {
               _onClearClick();
             } else if (value == '=') {
               _onEqualsClick();
@@ -258,7 +309,8 @@ class _MyCalculatorState extends State<MyCalculator> {
             }
           },
           style: ElevatedButton.styleFrom(
-            primary: Colors.grey[300], // Fondo de color más claro
+            primary:
+                Color.fromARGB(255, 243, 238, 238), // Fondo de color más claro
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(0.0), // Bordes casi cuadrados
             ),
@@ -267,7 +319,7 @@ class _MyCalculatorState extends State<MyCalculator> {
           child: Text(
             value,
             style: TextStyle(
-              fontSize: 24.0,
+              fontSize: 20.0,
               color: Colors.black, // Color de texto negro
             ),
           ),
